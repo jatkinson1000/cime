@@ -851,6 +851,62 @@ This allows using a different mpirun command to launch unit tests
     </environment_variables>
   </machine>
 
+  <machine MACH="csd3">
+    <DESC>UNIVERSITY OF CAMBRIDGE HPC</DESC>
+    <NODENAME_REGEX>(cpu|gpu|pvc|login)-[p-s](-hbm)?-([1-9]|[1-9][0-9]|[1-9][0-9][0-9]).data.cluster</NODENAME_REGEX>
+    <OS>LINUX</OS>
+    <COMPILERS>intel</COMPILERS>
+    <MPILIBS>intelmpi</MPILIBS>
+    <!-- TODO: Specified for testing, for final config remove and users define. -->
+    <PROJECT>ICCS-SL3-CPU</PROJECT>
+    <CIME_OUTPUT_ROOT>/home/$ENV{USER}/rds/hpc-work/</CIME_OUTPUT_ROOT>
+    <!-- TODO: Ideally this should be shared between users. -->
+    <DIN_LOC_ROOT>/home/$ENV{USER}/rds/hpc-work/cesm_inputdata</DIN_LOC_ROOT>
+    <DIN_LOC_ROOT_CLMFORC>/home/$ENV{USER}/rds/hpc-work/cesm_inputdata/atm/datm7</DIN_LOC_ROOT_CLMFORC>
+    <DOUT_S_ROOT>$CIME_OUTPUT_ROOT/archive/$CASE</DOUT_S_ROOT>
+    <BASELINE_ROOT>$CIME_OUTPUT_ROOT/cesm_baselines</BASELINE_ROOT>
+    <!-- TODO: This should be made generic on the system -->
+    <CCSM_CPRNC>/home/jwa34/cprnc/build</CCSM_CPRNC>
+    <GMAKE_J>16</GMAKE_J>
+    <BATCH_SYSTEM>slurm</BATCH_SYSTEM>
+    <SUPPORTED_BY>Jack Atkinson jwa34@cam.ac.uk</SUPPORTED_BY>
+    <MAX_TASKS_PER_NODE>76</MAX_TASKS_PER_NODE>
+    <MAX_MPITASKS_PER_NODE>76</MAX_MPITASKS_PER_NODE>
+    <PROJECT_REQUIRED>TRUE</PROJECT_REQUIRED>
+    <mpirun>
+      <executable>srun</executable>
+    </mpirun>
+    <module_system type="module" allow_error="true">
+      <init_path lang="perl">/usr/share/Modules/init/perl.pm</init_path>
+      <init_path lang="python">/usr/share/Modules/init/python.py</init_path>
+      <init_path lang="csh">/usr/share/Modules/init/csh</init_path>
+      <init_path lang="sh">/usr/share/Modules/init/sh</init_path>
+      <cmd_path lang="perl">/usr/bin/modulecmd perl</cmd_path>
+      <cmd_path lang="python">/usr/bin/modulecmd python</cmd_path>
+      <cmd_path lang="csh">module</cmd_path>
+      <cmd_path lang="sh">module</cmd_path>
+      <modules compiler="intel">
+        <command name="purge"/>
+        <command name="load">rhel8/cclake/base</command>
+        <command name="load">intel-oneapi-compilers/2023.2.4/gcc/4lbvg4hv</command>
+        <command name="load">intel-oneapi-mpi/2021.12.1/intel/hlruk24n</command>
+        <command name="load">intel-oneapi-mkl/2024.1.0/intel/vnktbkgm</command>
+        <command name="load">python/3.11.9/gcc/nptrdpll</command>
+        <command name="load">netcdf-c-pnetcdf/4.9.2/intel/intel-oneapi-mpi/pq5haxbk</command>
+        <command name="load">netcdf-fortran-pnetcdf/4.6.1/intel/intel-oneapi-mpi/gbob7yev</command>
+        <command name="load">parallel-netcdf/1.12.3/intel/intel-oneapi-mpi/pwkmmwr7</command>
+        <command name="load">binutils/2.42/gcc/y33xj6rq</command>
+        <command name="load">cmake/3.29.4/gcc/cery5wyj</command>
+      </modules>
+    </module_system>
+    <environment_variables>
+      <env name="OMP_STACKSIZE">64M</env>
+      <env name="I_MPI_DEBUG">7</env>
+      <!-- CIME CMake has trouble finding PNetCDF. Supply environment variable -->
+      <env name="PNETCDF_PATH">/usr/local/software/spack/csd3/opt-2024-06-01/linux-rocky8-cascadelake/intel-2021.10.0/parallel-netcdf-1.12.3-pwkmmwr7fhbbg4bpbhcwxff7z2ppqj27</env>
+    </environment_variables>
+  </machine>
+
   <machine MACH="perlmutter">
     <DESC>Perlmutter CPU-only nodes at NERSC.  Phase2 only: Each node has 2 AMD EPYC 7713 64-Core (Milan) 512GB batch system is Slurm</DESC>
 <!--    <NODENAME_REGEX>*.chn</NODENAME_REGEX> -->
