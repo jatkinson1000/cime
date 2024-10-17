@@ -748,6 +748,16 @@ using a fortran linker.
   </SLIBS>
 </compiler>
 
+<compiler MACH="csd3">
+  <PIO_FILESYSTEM_HINTS>lustre</PIO_FILESYSTEM_HINTS>
+  <NETCDF_PATH>$SHELL{nf-config --prefix}</NETCDF_PATH>
+  <PNETCDF_PATH>/usr/local/software/spack/csd3/opt-2024-06-01/linux-rocky8-cascadelake/intel-2021.10.0/parallel-netcdf-1.12.3-pwkmmwr7fhbbg4bpbhcwxff7z2ppqj27</PNETCDF_PATH>
+  <LDFLAGS>
+     <append> -lnetcdff -lnetcdf</append>
+     <append> -lpnetcdf</append>
+  </LDFLAGS>
+</compiler>
+
 <compiler MACH="derecho">
   <CFLAGS>
     <base>  -qno-opt-dynamic-align -fp-model precise -std=gnu99 </base>
