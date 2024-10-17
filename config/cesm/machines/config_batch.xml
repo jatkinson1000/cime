@@ -343,6 +343,24 @@
     </submit_args>
   </batch_system>
 
+  <batch_system MACH="csd3" type="slurm">
+    <batch_submit>sbatch</batch_submit>
+    <submit_args>
+      <arg flag="--time" name="$JOB_WALLCLOCK_TIME"/>
+      <arg flag="-q" name="$JOB_QUEUE"/>
+      <arg flag="--account" name="$PROJECT"/>
+      <arg flag="--export=ALL"/>
+      <arg flag="-p" name="icelake"/>
+    </submit_args>
+    <directives queue="standard">
+      <directive>--qos=cpu2</directive>
+    </directives>
+    <queues>
+      <queue walltimemax="2:00:00" nodemin="1" nodemax="32" default="true">cpu2</queue>
+      <queue walltimemax="00:20:00" nodemin="1" nodemax="32">short</queue>
+    </queues>
+  </batch_system>
+
   <batch_system MACH="daint" type="slurm" >
     <batch_submit>sbatch</batch_submit>
     <submit_args>
