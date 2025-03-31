@@ -857,8 +857,6 @@ This allows using a different mpirun command to launch unit tests
     <OS>LINUX</OS>
     <COMPILERS>intel</COMPILERS>
     <MPILIBS>intelmpi</MPILIBS>
-    <!-- TODO: Specified for testing, for final config remove and users define. -->
-    <PROJECT>ICCS-SL3-CPU</PROJECT>
     <CIME_OUTPUT_ROOT>/home/$ENV{USER}/rds/hpc-work/</CIME_OUTPUT_ROOT>
     <!-- TODO: Ideally this should be shared between users. -->
     <DIN_LOC_ROOT>/home/$ENV{USER}/rds/hpc-work/cesm_inputdata</DIN_LOC_ROOT>
@@ -866,7 +864,8 @@ This allows using a different mpirun command to launch unit tests
     <DOUT_S_ROOT>$CIME_OUTPUT_ROOT/archive/$CASE</DOUT_S_ROOT>
     <BASELINE_ROOT>$CIME_OUTPUT_ROOT/cesm_baselines</BASELINE_ROOT>
     <!-- TODO: This should be made generic on the system -->
-    <CCSM_CPRNC>/home/jwa34/cprnc/build</CCSM_CPRNC>
+    <!-- <CCSM_CPRNC>/home/$ENV{USER}/rds/hpc-work/cprnc/cprnc</CCSM_CPRNC> -->
+    <CCSM_CPRNC>/home/jwa34/cprnc/build/cprnc</CCSM_CPRNC>
     <GMAKE_J>16</GMAKE_J>
     <BATCH_SYSTEM>slurm</BATCH_SYSTEM>
     <SUPPORTED_BY>Jack Atkinson jwa34@cam.ac.uk</SUPPORTED_BY>
