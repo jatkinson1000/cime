@@ -863,9 +863,7 @@ This allows using a different mpirun command to launch unit tests
     <DIN_LOC_ROOT_CLMFORC>/home/$ENV{USER}/rds/hpc-work/cesm_inputdata/atm/datm7</DIN_LOC_ROOT_CLMFORC>
     <DOUT_S_ROOT>$CIME_OUTPUT_ROOT/archive/$CASE</DOUT_S_ROOT>
     <BASELINE_ROOT>$CIME_OUTPUT_ROOT/cesm_baselines</BASELINE_ROOT>
-    <!-- TODO: This should be made generic on the system -->
-    <!-- <CCSM_CPRNC>/home/$ENV{USER}/rds/hpc-work/cprnc/cprnc</CCSM_CPRNC> -->
-    <CCSM_CPRNC>/home/jwa34/cprnc/build/cprnc</CCSM_CPRNC>
+    <CCSM_CPRNC>/usr/local/software/spack/csd3/opt-2024-06-01/linux-rocky8-cascadelake/intel-2021.10.0/cprnc-1.0.3-5heedscpdnviytzhtxvb52qcpwgmgka5/bin/cprnc</CCSM_CPRNC>
     <GMAKE_J>16</GMAKE_J>
     <BATCH_SYSTEM>slurm</BATCH_SYSTEM>
     <SUPPORTED_BY>Jack Atkinson jwa34@cam.ac.uk</SUPPORTED_BY>
